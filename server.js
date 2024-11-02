@@ -15,7 +15,7 @@ const app = express();
 // app.use(cors());
 app.use(cors({
   // origin: 'https://horizon-games.netlify.app/',
-  origin: 'http://localhost:3000',
+  origin: 'https://horizon-games-v1.netlify.app',
   credentials: true 
 }));
 app.use(helmet());  
