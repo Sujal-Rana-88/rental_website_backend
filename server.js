@@ -6,7 +6,7 @@ const connectDB = require("./db/db");
 const port = process.env.PORT;
 const authRoutes = require("./routes/authRoutes");
 const lendRoutes = require("./routes/lendRoutes");
-const helmet = require('helmet'); 
+const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require("path");
 
@@ -16,23 +16,24 @@ const app = express();
 app.use(cors({
   // origin: 'https://horizon-games.netlify.app/',
   origin: 'http://localhost:3000',
-  credentials: true 
+  credentials: true
 }));
-app.use(helmet());  
+app.use(helmet());
 // app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("dev")); 
+app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false })); 
+app.use(express.urlencoded({ extended: false }));
 
 
 
 app.use("/", authRoutes);
-app.use("/games", lendRoutes);  
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-  
-connectDB(); 
+app.use("/games", lendRoutes);
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.listen(port, () => { 
+connectDB();
+
+
+app.listen(port, () => {
     console.log(`App is running on ${port}`);
 });
-  
+
